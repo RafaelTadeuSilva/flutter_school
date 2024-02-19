@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter_school/src/shared/api_client/api_client.dart';
 
-class MockApiClient implements ApiClient {
+class DebugApiClient implements ApiClient {
   @override
   Future<bool> deleteOne(String tabela, String params) async {
     return true;
@@ -15,7 +15,7 @@ class MockApiClient implements ApiClient {
   }
 
   @override
-  Future<Map<String, dynamic>> getOne(String tabela, String params) async {
+  Future<Map<String, dynamic>> getOne(String tabela, String id) async {
     return returnOne(tabela);
   }
 

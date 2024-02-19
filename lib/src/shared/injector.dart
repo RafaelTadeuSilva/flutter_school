@@ -13,7 +13,7 @@ Future injectorInit() async {
   injector.add(PatrimonioController.new);
   injector.addSingleton<AppNav>(NavigationService.new);
   injector.add(PatrimonioListController.new);
-  injector.addSingleton<ApiClient>(MockApiClient.new);
+  injector.addSingleton<ApiClient>(DebugApiClient.new);
   injector.addSingleton(PatrimonioRepository.new);
   injector.commit();
 }
