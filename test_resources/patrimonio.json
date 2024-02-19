@@ -1,0 +1,17 @@
+[
+  {
+    "id": "1",
+    "numeroPatrimonio": "123456",
+    "descricao": "Computador",
+    "idCompra": "1",
+    "marca": { "id": "1", "nome": "Dell" },
+    "modelo": "Inspiron",
+    "tipo": 1,
+    "status": 1,
+    "local": { "id": "1", "nome": "Sala 01", "andar": "1" },
+    "observacao": "Sem observação",
+    "dataCadastro": "2022-01-01T00:00:00.000Z",
+    "dataAtualizacao": "2022-01-01T00:00:00.000Z",
+    "idUsuarioAtualizacao": "1"
+  }
+]

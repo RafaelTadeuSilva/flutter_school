@@ -1,0 +1,5 @@
+package br.com.sgtmobile.flutter_school
+
+import io.flutter.embedding.android.FlutterActivity
+
+class MainActivity: FlutterActivity()
