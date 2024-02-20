@@ -1,20 +1,28 @@
 import 'package:flutter_school/export.dart';
 import 'package:flutter_school/src/features/patrimonio/repositories/patrimonio_repository.dart';
-import 'package:flutter_school/src/shared/either.dart';
+import 'package:flutter_school/src/mixins/load_mixin.dart';
 import 'package:signals/signals.dart';
 
-class PatrimonioListController {
+class PatrimonioListController with LoadMixin {
   final PatrimonioRepository repository;
 
-  final listPatrimonio = signal(<Patrimonio>[]);
+  final listPatrimonios = signal(<Patrimonio>[]);
 
   PatrimonioListController(this.repository);
 
-  Future<void> getAllPatrimonio() async {
+  Future<void> getPatrimonios() async {
+    startLoading();
+    await Future.delayed(Duration(seconds: 2));
     final list = await repository.listPatrimonios();
-    listPatrimonio.value = switch (list) {
-      Success() => list.value,
-      _ => [],
-    };
+    list.fold(onError, onSuccess);
+    stopLoading();
+  }
+
+  void onError(Exception failure) {
+    listPatrimonios.set([]);
+  }
+
+  void onSuccess(List<Patrimonio> success) {
+    listPatrimonios.set(success);
   }
 }

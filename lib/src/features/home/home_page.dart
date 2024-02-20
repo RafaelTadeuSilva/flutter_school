@@ -17,10 +17,13 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: const Text('Home'),
       ),
-      body: Center(
-        child: ElevatedButton(
-            onPressed: () => appNav.push('/patrimonio'), child: Text("data")),
-      ),
+      body: Column(children: [
+        ElevatedButton(
+            onPressed: () => appNav.push('/patrimonio'),
+            child: Text("Patrimonios")),
+        ElevatedButton(
+            onPressed: () => appNav.push('/marca'), child: Text("Marcas")),
+      ]),
     );
   }
 }

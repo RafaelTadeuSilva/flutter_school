@@ -20,7 +20,7 @@ class _PatrimonioListPageState extends State<PatrimonioListPage> {
   @override
   void initState() {
     super.initState();
-    control.getAllPatrimonio();
+    control.getPatrimonios();
   }
 
   @override
@@ -36,17 +36,23 @@ class _PatrimonioListPageState extends State<PatrimonioListPage> {
           },
           child: const Icon(Icons.add),
         ),
-        body: Watch(
-          (_) => ListView.builder(
-            itemBuilder: itemBuilder,
-            itemCount: control.listPatrimonio.value.length,
-          ),
-        ));
+        body: montaBody());
+  }
+
+  Widget montaBody() {
+    return Watch(
+      (_) => control.isLoading.value
+          ? const Center(child: CircularProgressIndicator())
+          : ListView.builder(
+              itemBuilder: itemBuilder,
+              itemCount: control.listPatrimonios.value.length,
+            ),
+    );
   }
 
   Widget? itemBuilder(BuildContext context, int index) {
     final Patrimonio(:id, :descricao, :numeroPatrimonio) =
-        control.listPatrimonio.value[index];
+        control.listPatrimonios.value[index];
     return ListTile(
       onTap: () async {
         await appNav.push("/patrimonio/detail", arguments: id);

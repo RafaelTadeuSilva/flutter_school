@@ -3,7 +3,7 @@ abstract class Either<E extends Exception, S> {
 
   bool get isSuccess => this is Success<E, S>;
 
-  T fold<T>(T Function(E left) fnL, T Function(S right) fnR);
+  T fold<T>(T Function(E failure) fnL, T Function(S success) fnR);
 
   E get failure => this.fold<E>(
       (value) => value,

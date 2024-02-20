@@ -12,8 +12,8 @@ class MarcaRepository {
     try {
       final result = await client.getData(tabela, '');
       return Success(result.map((e) => Marca.fromJson(e)).toList());
-    } on Exception catch (e) {
-      return Failure(e);
+    } catch (e) {
+      return Failure(Exception(e.toString()));
     }
   }
 }

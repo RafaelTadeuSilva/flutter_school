@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_school/src/features/home/home_page.dart';
+import 'package:flutter_school/src/features/marca/pages/marca_list_page.dart';
 import 'package:flutter_school/src/features/patrimonio/pages/patrimonio_list_page.dart';
 import 'package:flutter_school/src/features/patrimonio/pages/patrimonio_page.dart';
 
@@ -14,6 +15,11 @@ class RouteGenerator {
         final id = settings.arguments as String?;
         return MaterialPageRoute(builder: (context) => PatrimonioPage(id: id));
 
+      case '/marca':
+        return MaterialPageRoute(builder: (context) => MarcaListPage());
+      // case '/marca/detail':
+      //   final id = settings.arguments as String?;
+      //   return MaterialPageRoute(builder: (context) => MarcaPage(id: id));
       default:
         return MaterialPageRoute(
             builder: (context) => Scaffold(
