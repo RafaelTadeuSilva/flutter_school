@@ -1,18 +1,18 @@
 [
   {
-    "id": 1,
+    "id": "1",
     "nome": "Epson"
   },
   {
-    "id": 2,
+    "id": "2",
     "nome": "HP"
   },
   {
-    "id": 3,
+    "id": "3",
     "nome": "Canon"
   },
   {
-    "id": 4,
+    "id": "4",
     "nome": "Brother"
   }
 ]

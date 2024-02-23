@@ -40,14 +40,19 @@ class _PatrimonioListPageState extends State<PatrimonioListPage> {
   }
 
   Widget montaBody() {
-    return Watch(
-      (_) => control.isLoading.value
-          ? const Center(child: CircularProgressIndicator())
-          : ListView.builder(
-              itemBuilder: itemBuilder,
-              itemCount: control.listPatrimonios.value.length,
-            ),
-    );
+    return Watch((_) {
+      if (control.isLoading.value) {
+        return const Center(child: CircularProgressIndicator());
+      } else {
+        if (control.listPatrimonios.value.isEmpty) {
+          return const Center(child: Text('Nenhum patrimônio cadastrado'));
+        }
+        return ListView.builder(
+          itemBuilder: itemBuilder,
+          itemCount: control.listPatrimonios.value.length,
+        );
+      }
+    });
   }
 
   Widget? itemBuilder(BuildContext context, int index) {

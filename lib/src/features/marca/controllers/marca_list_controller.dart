@@ -12,7 +12,6 @@ class MarcaListController with LoadMixin {
 
   Future<void> getMarcas() async {
     startLoading();
-    await Future.delayed(Duration(seconds: 1));
     final list = await repository.listMarcas();
     list.fold(onError, onSuccess);
     stopLoading();

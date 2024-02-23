@@ -1,9 +1,10 @@
 import 'package:flutter_school/export.dart';
 import 'package:flutter_school/src/features/patrimonio/repositories/patrimonio_repository.dart';
 import 'package:flutter_school/src/mixins/load_mixin.dart';
+import 'package:flutter_school/src/mixins/message_mixin.dart';
 import 'package:signals/signals.dart';
 
-class PatrimonioListController with LoadMixin {
+class PatrimonioListController with LoadMixin, MessageMixin {
   final PatrimonioRepository repository;
 
   final listPatrimonios = signal(<Patrimonio>[]);
@@ -12,7 +13,6 @@ class PatrimonioListController with LoadMixin {
 
   Future<void> getPatrimonios() async {
     startLoading();
-    await Future.delayed(Duration(seconds: 2));
     final list = await repository.listPatrimonios();
     list.fold(onError, onSuccess);
     stopLoading();
@@ -20,6 +20,7 @@ class PatrimonioListController with LoadMixin {
 
   void onError(Exception failure) {
     listPatrimonios.set([]);
+    showError(failure);
   }
 
   void onSuccess(List<Patrimonio> success) {

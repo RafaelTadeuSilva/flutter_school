@@ -5,7 +5,7 @@ import 'package:flutter_school/src/features/marca/repositories/marca_repository.
 import 'package:flutter_school/src/features/patrimonio/controllers/patrimonio_list_controller.dart';
 import 'package:flutter_school/src/features/patrimonio/repositories/patrimonio_repository.dart';
 import 'package:flutter_school/src/shared/api_client/api_client.dart';
-import 'package:flutter_school/src/shared/api_client/mock_api_client.dart';
+import 'package:flutter_school/src/shared/api_client/debug_api_client.dart';
 import 'package:flutter_school/src/util/navigator/app_nav.dart';
 import 'package:flutter_school/src/util/navigator/navigation_service.dart';
 
