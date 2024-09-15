@@ -39,11 +39,11 @@ class _PatrimonioPageState extends State<PatrimonioPage> {
             children: [
               TextFormField(
                 controller: txtNumeroPatrimonio,
-                onChanged: control.numeroPatrimonio.set,
+                onChanged: control.setNumeroPatrimonio,
               ),
               TextFormField(
                 controller: txtDescricao,
-                onChanged: control.descricao.set,
+                onChanged: control.setDescricao,
               ),
               Center(
                   child: ElevatedButton(
@@ -57,7 +57,8 @@ class _PatrimonioPageState extends State<PatrimonioPage> {
 
   Future<void> buscaPatrimonio(String? id) async {
     if (id != null) {
-      final patrimonio = await control.findOne(id);
+      await control.getPatrimonio(id);
+      final patrimonio = control.patrimonioAtual.value;
       if (patrimonio != null) {
         txtDescricao.text = patrimonio.descricao;
         txtNumeroPatrimonio.text = patrimonio.numeroPatrimonio;
